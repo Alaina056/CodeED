@@ -1,18 +1,14 @@
 import CodeMirrorColor from "@/components/CodeMirrorColor";
+import CodeRender from "@/components/CodeRender";
 import CompilerSubHeader from "@/components/CompilerSubHeader";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import { RootState } from "@/redux/reduxStore";
-import { useSelector } from "react-redux";
 
 const Compiler = () => {
-  // retrieve value from reduxStore
-  // const html = useSelector((state:RootState)=>{state.compilerSlice.html});
-  // const css = useSelector((state:RootState)=>{state.compilerSlice.css});
-  // const javascript = useSelector((state:RootState)=>{state.compilerSlice.javascript});
+
   
   return (
     <div className=" w-full h-[calc(100dvh-5rem)] text-white">
@@ -33,7 +29,7 @@ const Compiler = () => {
           defaultSize={50}
           className="h-[calc(100dvh-5rem)] min-w-[10rem]"
         >
-          right
+          <CodeRender/>
         </ResizablePanel>
       </ResizablePanelGroup>
     </div>

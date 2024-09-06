@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 
@@ -8,23 +8,30 @@ import {  draculaInit } from '@uiw/codemirror-theme-dracula';
 
 // to support multiple languages
 import { loadLanguage, langNames, langs } from '@uiw/codemirror-extensions-langs';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/reduxStore";
+import { CompilerSliceState, updateCode } from "@/redux/slices/compilerSlice";
 
 const CodeMirrorColor = () => {
 
-  const currentLang = useSelector(
+  // useSelector function accepts a selector callback as first argument . this callback function returns a part of Redux store's state or compute derived data
+  const currentLang = useSelector(                                
     (state: RootState)=>state.compilerSlice.currentLang);
 
-  const [value, setValue] = React.useState("console.log('hello world!');");
-  const onChange = React.useCallback((val:any) => {
-    console.log("val:", val);
-    setValue(val);
+  const completeCode = useSelector(
+    (state: RootState)=>state.compilerSlice.completeCode
+  );
+  const dispatch = useDispatch(); 
+  const onChange = React.useCallback((value: string) => {
+    dispatch(updateCode(value));
   }, []);
+
   return (
     <CodeMirror
-      value={value}
-      height="100vh"
+      value={(completeCode[currentLang])}
+      height="calc(100vh - 10rem)"
+      
+      className="code-editor"
       extensions={[loadLanguage(currentLang)!]}
       onChange={onChange}
       theme={draculaInit({
