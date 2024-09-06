@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 
 export default function Header() {
   return (
-    <nav className="w-full  select-none h-[5rem] p-5 justify-between items-center flex bg-slate-800 text-white shadow-md">
+    <nav className="w-full  select-none h-[5rem] p-5 justify-between items-center flex  text-white shadow-md">
       <Link to='/' className="font-bold text-3xl "> 
       CodeEd 
       </Link>
