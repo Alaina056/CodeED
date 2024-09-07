@@ -8,8 +8,6 @@ import {
 } from "@/components/ui/resizable";
 
 const Compiler = () => {
-
-  
   return (
     <div className=" w-full h-[calc(100dvh-5rem)] text-white">
       <ResizablePanelGroup
@@ -29,7 +27,7 @@ const Compiler = () => {
           defaultSize={50}
           className="h-[calc(100dvh-5rem)] min-w-[10rem]"
         >
-          <CodeRender/>
+          <CodeRender />
         </ResizablePanel>
       </ResizablePanelGroup>
     </div>
