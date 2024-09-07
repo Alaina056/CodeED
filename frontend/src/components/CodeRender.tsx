@@ -2,6 +2,8 @@ import { RootState } from "@/redux/reduxStore";
 import React from "react";
 import { useSelector } from "react-redux";
 
+
+// to preview the code {right handside of screen}
 const CodeRender = () => {
   const completeCode = useSelector(
     (state: RootState) => state.compilerSlice.completeCode

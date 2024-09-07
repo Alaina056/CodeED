@@ -7,6 +7,7 @@ export interface CompilerSliceState {
     javascript: string;
   };
   currentLang: "html" | "css" | "javascript";
+  
 }
 
 // creating state variables to store data
@@ -138,7 +139,7 @@ function determineWinner(playerChoice, computerChoice) {
 
   currentLang: "html",
 };
-
+ 
 // defining functions to update the state/data
 const compilerSlice = createSlice({
   name: "compilerSlice",
@@ -159,8 +160,15 @@ const compilerSlice = createSlice({
        state.completeCode[state.currentLang] = action.payload;
 
     },
+    loadSavedCode: (
+        state,
+        action: PayloadAction<CompilerSliceState["completeCode"]>
+      ) => {
+       
+        state.completeCode = action.payload;
+      },
   },
 });
 
 export default compilerSlice.reducer;
-export const { updateCurrentLanguate, updateCode } = compilerSlice.actions;
+export const { updateCurrentLanguate, updateCode, loadSavedCode } = compilerSlice.actions;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./ui/button";
 import {
   Select,
@@ -17,22 +17,36 @@ import {
 import { RootState } from "@/redux/reduxStore";
 import { handleError } from "@/utils/handleError";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+import {DialogCloseButton} from "./ShareModel";
 
 const CompilerSubHeader = () => {
 
-  const completeCode = useSelector((state:RootState)=>state.compilerSlice.completeCode);
+  const [saveCodeLoad, setSaveCodeLoad] = useState<boolean>(false);
+  const navigate = useNavigate(); // to navigate the user to their saved code
+  const completeCode = useSelector(
+    (state: RootState) => state.compilerSlice.completeCode
+  );
 
-  const handleSaveCode = async () =>{
+  const handleSaveCode = async () => {
+    setSaveCodeLoad(true);
     try {
-      const response = await axios.post("http://localhost:4000/compiler/save",
-        {completeCode:completeCode} //data to be stored in db
-        
+      const response = await axios.post(
+        "http://localhost:4000/compiler/save",
+        { completeCode: completeCode } //data to be stored in db
       );
       console.log(response.data);
+      navigate(`/compiler/${response.data.url}`, { replace: true }); // replace the complete url evertime the function is being called
+
+
     } catch (error) {
       handleError(error);
     }
-  }
+    finally{
+      setSaveCodeLoad(false)
+    }
+  };
 
   const dispatch = useDispatch();
   const currentLang = useSelector(
@@ -42,8 +56,10 @@ const CompilerSubHeader = () => {
   return (
     <div className="__helper_header h-[5rem] bg-black text-white p-2 flex items-center justify-between">
       <div className="flex gap-2">
-        <Button variant="save" onClick={handleSaveCode}>Save</Button>
-        <Button variant="secondary">Share</Button>
+        <Button variant="save" disabled={saveCodeLoad} onClick={handleSaveCode}>
+          {saveCodeLoad? "Saving...": "Save"}
+        </Button>
+      <DialogCloseButton/>
       </div>
 
       <div className="__select_menu">
