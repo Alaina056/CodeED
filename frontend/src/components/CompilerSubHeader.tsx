@@ -7,7 +7,7 @@ import {
   updateCurrentLanguate,
 } from "@/redux/slices/compilerSlice";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 import { RootState } from "@/redux/reduxStore";
 import { handleError } from "@/utils/handleError";
