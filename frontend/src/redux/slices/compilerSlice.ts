@@ -13,8 +13,7 @@ export interface CompilerSliceState {
 // creating state variables to store data
 const initialState: CompilerSliceState = {
   completeCode: {
-    html: `
-    <!DOCTYPE html>
+    html: `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -38,8 +37,7 @@ const initialState: CompilerSliceState = {
 </html>
 
     `,
-    css: `
-    body {
+    css: `body {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -99,8 +97,7 @@ h1 {
     background-color: #007bb5;
 }
 `,
-    javascript: `
-    const choices = ['rock', 'paper', 'scissors'];
+    javascript: `const choices = ['rock', 'paper', 'scissors'];
 const resultDiv = document.getElementById('result');
 const resetBtn = document.getElementById('reset');
 

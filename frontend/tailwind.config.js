@@ -66,10 +66,17 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "zoom":{
+          '0%': { transform: 'scale(1.3)' },
+          '15%': { transform: 'scale(1)' },
+          '85%': { transform: 'scale(1)' },
+          '100%': { transform: 'scale(1.3)' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "zoom": 'zoom 3s linear infinite',
       },
     },
   },

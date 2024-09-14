@@ -4,10 +4,12 @@ import Home from "./pages/Home";
 import Compiler from "./pages/Compiler";
 import Error404 from "./pages/Error404";
 import { ThemeProvider } from "./components/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 function App() {
   return (
     <>
+     <Toaster />
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <Header />
         <Routes>

@@ -3,15 +3,16 @@ import { Button } from "./ui/button";
 
 export default function Header() {
   return (
-    <nav className="w-full  select-none h-[5rem] p-5 justify-between items-center flex  text-white shadow-md">
+    <nav className="w-full  select-none h-[5rem] p-5 justify-between items-center flex text-white shadow-md " >
       <Link to="/" className="font-bold text-3xl ">
-        CodeEd
+     {'</>'}CodeEd
       </Link>
       <ul className="">
         <li>
           <Link to="/compiler">
             <Button
-              variant="outline"
+            style={{letterSpacing: "0.065em"}}
+              variant="editorbtn"
               className="text-2xl font-semibold w-[10rem] h-[3.5rem]"
             >
               Editor{" "}

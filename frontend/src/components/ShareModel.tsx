@@ -1,6 +1,6 @@
-import { CopyIcon } from "@radix-ui/react-icons"
+import { CopyIcon } from "@radix-ui/react-icons";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -10,9 +10,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { toast } from "sonner";
 
 export function DialogCloseButton() {
   return (
@@ -24,7 +25,7 @@ export function DialogCloseButton() {
         <DialogHeader>
           <DialogTitle>Share link</DialogTitle>
           <DialogDescription>
-            Anyone who has this link will be able to view this.
+            Anyone who has this link will be able to change the code.
           </DialogDescription>
         </DialogHeader>
         <div className="flex items-center space-x-2">
@@ -32,17 +33,17 @@ export function DialogCloseButton() {
             <Label htmlFor="link" className="sr-only">
               Link
             </Label>
-            <Input
-              id="link"
-              defaultValue={window.location.href}
-              readOnly
-            />
+            <Input id="link" defaultValue={window.location.href} readOnly />
           </div>
           <Button type="submit" size="sm" className="px-3">
             <span className="sr-only">Copy</span>
-            <CopyIcon className="h-4 w-4" onClick={()=>{
+            <CopyIcon
+              className="h-4 w-4"
+              onClick={() => {
                 window.navigator.clipboard.writeText(window.location.href);
-            }}/>
+                toast.success("Link copied to clipboard");
+              }}
+            />
           </Button>
         </div>
         <DialogFooter className="sm:justify-start">
@@ -54,5 +55,5 @@ export function DialogCloseButton() {
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
