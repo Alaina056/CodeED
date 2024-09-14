@@ -8,7 +8,7 @@ import { draculaInit } from "@uiw/codemirror-theme-dracula";
 // to support multiple languages
 import {
   loadLanguage,
-  langs,
+
 } from "@uiw/codemirror-extensions-langs";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/reduxStore";
