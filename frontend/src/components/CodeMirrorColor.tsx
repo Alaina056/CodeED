@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import CodeMirror from "@uiw/react-codemirror";
-import { javascript } from "@codemirror/lang-javascript";
 
 // For Dracula Code Mirror Theme
 import { tags as t } from "@lezer/highlight";
@@ -9,12 +8,11 @@ import { draculaInit } from "@uiw/codemirror-theme-dracula";
 // to support multiple languages
 import {
   loadLanguage,
-  langNames,
   langs,
 } from "@uiw/codemirror-extensions-langs";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/reduxStore";
-import { CompilerSliceState, updateCode } from "@/redux/slices/compilerSlice";
+import { updateCode } from "@/redux/slices/compilerSlice";
 
 const CodeMirrorColor = () => {
   // useSelector function accepts a selector callback as first argument . this callback function returns a part of Redux store's state or compute derived data
